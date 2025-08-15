@@ -1,0 +1,447 @@
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --ig-primary: #000000;
+            --ig-secondary: #262626;
+            /* Couleur ajustée pour un meilleur contraste (WCAG AA) */
+            --ig-tertiary: #767676;
+            --ig-light: #fafafa;
+            --ig-white: #ffffff;
+            --ig-border: #dbdbdb;
+            --ig-blue: #0095f6;
+            --ig-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            --ig-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --ig-shadow-hover: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background-color: var(--ig-white);
+            color: var(--ig-primary);
+            line-height: 1.6;
+        }
+
+        /* Amélioration de l'accessibilité : focus visible pour la navigation au clavier */
+        *:focus-visible {
+            outline: 3px solid var(--ig-blue);
+            outline-offset: 2px;
+            border-radius: 4px;
+            transition: outline-offset 0.1s ease;
+        }
+        
+        /* Typography Instagram Style */
+        .ig-title {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: var(--ig-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .ig-subtitle {
+            font-weight: 600;
+            color: var(--ig-secondary);
+            letter-spacing: -0.01em;
+        }
+        
+        .ig-text {
+            color: var(--ig-secondary);
+            font-weight: 400;
+        }
+        
+        .ig-text-light {
+            color: var(--ig-tertiary);
+            font-weight: 400;
+        }
+        
+        /* Buttons Instagram Style */
+        .ig-btn-primary {
+            background: var(--ig-blue);
+            color: white;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+        }
+        
+        .ig-btn-primary:hover {
+            background: #1877f2;
+            transform: translateY(-1px);
+            box-shadow: var(--ig-shadow-hover);
+        }
+        
+        .ig-btn-secondary {
+            background: transparent;
+            color: var(--ig-secondary);
+            font-weight: 600;
+            border: 1px solid var(--ig-border);
+            border-radius: 8px;
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+        
+        .ig-btn-secondary:hover {
+            background: var(--ig-light);
+            border-color: var(--ig-secondary);
+        }
+        
+        .ig-btn-gradient {
+            background: var(--ig-gradient);
+            color: white;
+            font-weight: 700;
+            border-radius: 12px;
+            padding: 16px 32px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            box-shadow: var(--ig-shadow);
+        }
+        
+        .ig-btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--ig-shadow-hover);
+        }
+        
+        /* Cards Instagram Style */
+        .ig-card {
+            background: var(--ig-white);
+            border: 1px solid var(--ig-border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            box-shadow: var(--ig-shadow);
+        }
+        
+        .ig-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--ig-shadow-hover);
+            border-color: var(--ig-tertiary);
+        }
+        
+        /* Navigation Instagram Style */
+        .ig-nav {
+            background: var(--ig-white);
+            border-bottom: 1px solid var(--ig-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .ig-nav-link {
+            color: var(--ig-secondary);
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .ig-nav-link:hover {
+            color: var(--ig-primary);
+        }
+        
+        .ig-nav-link.active {
+            color: var(--ig-primary);
+            font-weight: 600;
+        }
+        
+        .ig-nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--ig-primary);
+            border-radius: 50%;
+        }
+        
+        /* Hero Section Instagram Style */
+        .ig-hero {
+            background: linear-gradient(135deg, var(--ig-light) 0%, var(--ig-white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ig-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f0f0f0' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        /* Portfolio Grid Instagram Style */
+        .ig-portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1px;
+            background: var(--ig-border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .ig-portfolio-item {
+            aspect-ratio: 1;
+            background: var(--ig-white);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .ig-portfolio-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .ig-portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .ig-portfolio-item:hover .ig-portfolio-overlay {
+            opacity: 1;
+        }
+        
+        /* Form Instagram Style */
+        .ig-form-group {
+            margin-bottom: 16px;
+        }
+        
+        .ig-form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ig-tertiary);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .ig-form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--ig-border);
+            border-radius: 8px;
+            background: var(--ig-white);
+            color: var(--ig-secondary);
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .ig-form-input:focus {
+            outline: none;
+            /* Le style :focus-visible gère maintenant l'outline pour l'accessibilité */
+            border-color: var(--ig-blue);
+            box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.1);
+        }
+        
+        /* Floating CTA Instagram Style */
+        .ig-floating-cta {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+            background: var(--ig-gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 16px 24px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            animation: ig-pulse 3s infinite;
+        }
+        
+        .ig-floating-cta:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes ig-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Modal Instagram Style */
+        .ig-modal {
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        
+        .ig-modal-content {
+            background: var(--ig-white);
+            border-radius: 16px;
+            max-width: 400px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .ig-title {
+                font-size: 2.5rem;
+            }
+            
+            .ig-card {
+                padding: 20px;
+            }
+            
+            .ig-floating-cta {
+                bottom: 20px;
+                right: 20px;
+                padding: 14px 20px;
+                font-size: 13px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .ig-title {
+                font-size: 2rem;
+            }
+            
+            .ig-card {
+                padding: 16px;
+            }
+            
+            .ig-btn-gradient {
+                padding: 14px 28px;
+                font-size: 14px;
+            }
+        }
+        
+        /* Large screens optimization */
+        @media (min-width: 1440px) {
+            .ig-section {
+                padding: 100px 0;
+            }
+            
+            .ig-title {
+                font-size: 6rem;
+            }
+            
+            .ig-subtitle {
+                font-size: 3.5rem;
+            }
+            
+            .ig-card {
+                padding: 32px;
+            }
+            
+            .ig-portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 1920px) {
+            .ig-section {
+                padding: 120px 0;
+            }
+            
+            .max-w-6xl {
+                max-width: 80rem;
+            }
+        }
+        
+        /* Animations */
+        /*
+          Performance Optimization:
+          Replaced keyframe animations with a more performant class-based transition system.
+          The initial state is defined on the base classes, and the '.is-visible' class,
+          added by JavaScript's IntersectionObserver, triggers the transition.
+        */
+        .ig-fade-in, .ig-slide-up {
+            opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .ig-fade-in {
+            transform: translateY(20px);
+        }
+
+        .ig-slide-up {
+            transform: translateY(40px);
+        }
+
+        .ig-fade-in.is-visible, .ig-slide-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Section Spacing */
+        .ig-section {
+            padding: 80px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .ig-section {
+                padding: 60px 0;
+            }
+        }
+        
+        /* Logo Instagram Style */
+        .ig-logo {
+            font-weight: 800;
+            font-size: 24px;
+            background: var(--ig-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+        
+        /* Stats Instagram Style */
+        .ig-stats {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        .ig-stat {
+            text-align: center;
+        }
+        
+        .ig-stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--ig-primary);
+            display: block;
+        }
+        
+        .ig-stat-label {
+            font-size: 12px;
+            color: var(--ig-tertiary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }

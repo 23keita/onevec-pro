@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onevec Creator - Construction et Plans de Maison en Guinée</title>
+    <meta name="description" content="Spécialiste en conception de plans 2D/3D et construction de maisons en Guinée. Devis gratuit et réalisations de qualité à Conakry.">
+    <meta name="keywords" content="construction Guinée, plan de maison Conakry, architecte Guinée, bâtiment Conakry">
+    
+    <!-- Security Headers -->
+    <!-- CSP renforcée : 'unsafe-inline' a été retiré de la politique des scripts. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <!-- L'en-tête X-XSS-Protection est obsolète et remplacé par la CSP. Il peut être supprimé. -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="ig-nav fixed w-full top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="#accueil" class="ig-logo cursor-pointer">🏗️ Onevec Creator</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#accueil" class="ig-nav-link active">Accueil</a>
+                    <a href="#apropos" class="ig-nav-link">À propos</a>
+                    <a href="#services" class="ig-nav-link">Services</a>
+                    <a href="#portfolio" class="ig-nav-link">Portfolio</a>
+                    <a href="#blog" class="ig-nav-link">Blog</a>
+                    <a href="#contact" class="ig-nav-link">Contact</a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="ig-nav-link" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobile-menu">
+                        <i class="fas fa-bars text-xl" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#accueil" class="block ig-nav-link">Accueil</a>
+                <a href="#apropos" class="block ig-nav-link">À propos</a>
+                <a href="#services" class="block ig-nav-link">Services</a>
+                <a href="#portfolio" class="block ig-nav-link">Portfolio</a>
+                <a href="#blog" class="block ig-nav-link">Blog</a>
+                <a href="#contact" class="block ig-nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+    <section id="accueil" class="ig-hero ig-section mt-16 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="ig-fade-in">
+                <h1 class="ig-title text-5xl md:text-7xl mb-6">
+                    Construisons Ensemble<br>
+                    Votre Maison de Rêve
+                </h1>
+                <p class="ig-text text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                    Spécialistes en conception de plans 2D/3D et construction de maisons en Guinée. 
+                    Plus de 4 ans d'expérience au service de vos projets.
+                </p>
+                
+                <!-- Stats Instagram Style -->
+                <div class="ig-stats">
+                    <div class="ig-stat">
+                        <span class="ig-stat-number">4+</span>
+                        <span class="ig-stat-label">Années</span>
+                    </div>
+                    <div class="ig-stat">
+                        <span class="ig-stat-number">50+</span>
+                        <span class="ig-stat-label">Projets</span>
+                    </div>
+                    <div class="ig-stat">
+                        <span class="ig-stat-number">100%</span>
+                        <span class="ig-stat-label">Satisfaits</span>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button id="open-quote-modal-hero" class="ig-btn-gradient">
+                        Devis Gratuit
+                    </button>
+                    <a href="#portfolio" class="ig-btn-secondary inline-flex items-center justify-center">
+                        Voir nos Réalisations
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="ig-section" style="background-color: var(--ig-light);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 ig-slide-up">
+                <h2 class="ig-subtitle text-4xl md:text-5xl mb-4">Nos Services</h2>
+                <p class="ig-text-light text-xl max-w-2xl mx-auto">
+                    De la conception à la réalisation, nous vous accompagnons dans tous vos projets de construction
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="ig-card ig-fade-in">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background: var(--ig-gradient);">
+                            <i class="fas fa-drafting-compass text-white text-2xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="ig-subtitle text-2xl mb-4">Plans 2D/3D</h3>
+                    </div>
+                    <p class="ig-text mb-6 text-center">
+                        Conception architecturale complète avec visualisation 3D réaliste de votre future maison.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center ig-text">
+                            <i class="fas fa-check-circle text-green-500 mr-3" aria-hidden="true"></i>
+                            Plans détaillés
+                        </li>
+                        <li class="flex items-center ig-text">
+                            <i class="fas fa-check-circle text-green-500 mr-3" aria-hidden="true"></i>
+                            Modélisation 3D
+                        </li>
+                        <li class="flex items-center ig-text">
+                            <i class="fas fa-check-circle text-green-500 mr-3" aria-hidden="true"></i>
+                            Permis de construire
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <div class="ig-subtitle text-xl mb-4">À partir de 500 000 GNF</div>
+                        <button class="ig-btn-primary w-full" aria-label="En savoir plus sur les services de plans 2D et 3D">En savoir plus</button>
+                    </div>
+                </div>
+                
+                <div class="ig-card ig-fade-in" style="animation-delay: 0.2s;">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background: var(--ig-gradient);">
+                            <i class="fas fa-hammer text-white text-2xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="ig-subtitle text-2xl mb-4">Construction</h3>
+                    </div>
+                    <p class="ig-text mb-6 text-center">
+                        Construction complète de votre maison avec des matériaux de qualité et un suivi rigoureux.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center ig-text">
+                            <i class="fas fa-check-circle text-green-500 mr-3" aria-hidden="true"></i>
+                            Gros œuvre
+                        </li>
+                        <li class="flex items-center ig-text">
+                            <i class="fas fa-check-circle text-green-500 mr-3" aria-hidden="true"></i>
+                            Second œuvre
+                        </li>
+                        <li class="flex items-center ig-text">
+                            <i class="fas fa-check-circle text-green-500 mr-3" aria-hidden="true"></i>
+                            Finitions
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <div class="ig-subtitle text-xl mb-4">Devis personnalisé</div>
+                        <button class="ig-btn-primary w-full" aria-label="En savoir plus sur les services de construction">En savoir plus</button>
+                    </div>
+                </div>
+                
+                <div class="ig-card ig-fade-in" style="animation-delay: 0.4s;">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background: var(--ig-gradient);">
+                            <i class="fas fa-tools text-white text-2xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="ig-subtitle text-2xl mb-4">Rénovation</h3>
+                    </div>
+                    <p class="ig-text mb-6 text-center">
+                        Rénovation et extension de votre habitat existant pour l'adapter à vos nouveaux besoins.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center ig-text">
+                            <i class="fas fa-check-circle text-green-500 mr-3" aria-hidden="true"></i>
+                            Rénovation complète
+                        </li>
+                        <li class="flex items-center ig-text">
+                            <i class="fas fa-check-circle text-green-500 mr-3" aria-hidden="true"></i>
+                            Extensions
+                        </li>
+                        <li class="flex items-center ig-text">
+                            <i class="fas fa-check-circle text-green-500 mr-3" aria-hidden="true"></i>
+                            Modernisation
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <div class="ig-subtitle text-xl mb-4">Sur mesure</div>
+                        <button class="ig-btn-primary w-full" aria-label="En savoir plus sur les services de rénovation">En savoir plus</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="ig-section">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 ig-slide-up">
+                <h2 class="ig-subtitle text-4xl md:text-5xl mb-4">Nos Réalisations</h2>
+                <p class="ig-text-light text-xl max-w-2xl mx-auto">
+                    Découvrez quelques-unes de nos plus belles réalisations à travers la Guinée
+                </p>
+            </div>
+            
+            <div class="ig-portfolio-grid">
+                <div class="ig-portfolio-item" role="img" aria-label="Villa Moderne à Conakry, réalisée en 2023.">
+                    <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <div class="text-center text-white">
+                            <i class="fas fa-home text-4xl mb-4" aria-hidden="true"></i>
+                            <h4 class="text-lg font-bold">Villa Moderne</h4>
+                            <p class="text-sm opacity-90">Conakry - 2023</p>
+                        </div>
+                    </div>
+                    <div class="ig-portfolio-overlay">
+                        <div class="text-center text-white">
+                            <h4 class="text-xl font-bold mb-2">Villa Moderne - Conakry</h4>
+                            <p class="mb-4">Villa de 4 chambres avec piscine et jardin paysager</p>
+                            <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                                <p class="text-sm italic">"Excellent travail, équipe très professionnelle !" - M. Diallo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ig-portfolio-item" role="img" aria-label="Maison Familiale à Kindia, rénovée en 2023.">
+                    <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div class="text-center text-white">
+                            <i class="fas fa-building text-4xl mb-4" aria-hidden="true"></i>
+                            <h4 class="text-lg font-bold">Maison Familiale</h4>
+                            <p class="text-sm opacity-90">Kindia - 2023</p>
+                        </div>
+                    </div>
+                    <div class="ig-portfolio-overlay">
+                        <div class="text-center text-white">
+                            <h4 class="text-xl font-bold mb-2">Maison Familiale - Kindia</h4>
+                            <p class="mb-4">Rénovation complète d'une maison traditionnelle</p>
+                            <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                                <p class="text-sm italic">"Transformation incroyable, merci !" - Mme Camara</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ig-portfolio-item" role="img" aria-label="Complexe Résidentiel à Labé, construit en 2022.">
+                    <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="text-center text-white">
+                            <i class="fas fa-city text-4xl mb-4" aria-hidden="true"></i>
+                            <h4 class="text-lg font-bold">Complexe Résidentiel</h4>
+                            <p class="text-sm opacity-90">Labé - 2022</p>
+                        </div>
+                    </div>
+                    <div class="ig-portfolio-overlay">
+                        <div class="text-center text-white">
+                            <h4 class="text-xl font-bold mb-2">Complexe Résidentiel - Labé</h4>
+                            <p class="mb-4">Ensemble de 6 maisons avec espaces communs</p>
+                            <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                                <p class="text-sm italic">"Projet livré dans les délais !" - M. Barry</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos" class="ig-section" style="background-color: var(--ig-light);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="ig-slide-up">
+                    <h2 class="ig-subtitle text-4xl md:text-5xl mb-6">À Propos d'Onevec Creator</h2>
+                    <p class="ig-text text-lg mb-8">
+                        Fondée en 2013, Onevec Creator est une entreprise guinéenne spécialisée dans la conception architecturale 
+                        et la construction de maisons. Notre mission est de réaliser vos rêves immobiliers avec excellence et professionnalisme.
+                    </p>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background: var(--ig-gradient);">
+                                <i class="fas fa-award text-white" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4 class="ig-subtitle text-lg">Plus de 4 ans d'expérience</h4>
+                                <p class="ig-text-light text-sm">Dans la construction en Guinée</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background: var(--ig-gradient);">
+                                <i class="fas fa-users text-white" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4 class="ig-subtitle text-lg">Équipe qualifiée</h4>
+                                <p class="ig-text-light text-sm">Architectes et ingénieurs certifiés</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background: var(--ig-gradient);">
+                                <i class="fas fa-handshake text-white" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4 class="ig-subtitle text-lg">Plus de projets réalisés</h4>
+                                <p class="ig-text-light text-sm">Clients satisfaits à travers la Guinée</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ig-card">
+                        <h4 class="ig-subtitle text-xl mb-3">Notre Vision</h4>
+                        <p class="ig-text">
+                            Devenir la référence en construction résidentielle en Guinée en alliant innovation, 
+                            qualité et respect de l'environnement local.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="space-y-6 ig-fade-in">
+                    <div class="ig-card">
+                        <h4 class="ig-subtitle text-xl mb-6">Notre Équipe</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold mr-4" style="background: var(--ig-gradient);">
+                                    YM
+                                </div>
+                                <div>
+                                    <h5 class="ig-subtitle">Yahya Marra</h5>
+                                    <p class="ig-text-light text-sm">Architecte</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold mr-4" style="background: var(--ig-gradient);">
+                                    AK
+                                </div>
+                                <div>
+                                    <h5 class="ig-subtitle">Antoine Keita</h5>
+                                    <p class="ig-text-light text-sm">Responsable RH et Gestion</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold mr-4" style="background: var(--ig-gradient);">
+                                    MD
+                                </div>
+                                <div>
+                                    <h5 class="ig-subtitle">Mohamede Lamine Draba</h5>
+                                    <p class="ig-text-light text-sm">Ingénieur en Chef</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold mr-4" style="background: var(--ig-gradient);">
+                                    AC
+                                </div>
+                                <div>
+                                    <h5 class="ig-subtitle">Aboubacar Camara</h5>
+                                    <p class="ig-text-light text-sm">Ingénieur en Chef</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ig-card" style="background: var(--ig-gradient); color: white;">
+                        <h4 class="text-xl font-bold mb-4">Nos Valeurs</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3" aria-hidden="true"></i>
+                                Qualité et excellence
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3" aria-hidden="true"></i>
+                                Respect des délais
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3" aria-hidden="true"></i>
+                                Transparence totale
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3" aria-hidden="true"></i>
+                                Innovation continue
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="ig-section">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 ig-slide-up">
+                <h2 class="ig-subtitle text-4xl md:text-5xl mb-4">Blog & Conseils</h2>
+                <p class="ig-text-light text-xl max-w-2xl mx-auto">
+                    Découvrez nos conseils d'experts pour réussir votre projet de construction en Guinée
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <article class="ig-card ig-fade-in">
+                    <div class="h-48 rounded-lg mb-6" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
+                    <div class="mb-2">
+                        <span class="ig-form-label" style="color: var(--ig-blue);">CONSEILS</span>
+                    </div>
+                    <h3 class="ig-subtitle text-xl mb-3">Choisir les bons matériaux en Guinée</h3>
+                    <p class="ig-text mb-4">
+                        Guide complet pour sélectionner les matériaux adaptés au climat tropical guinéen...
+                    </p>
+                    <div class="flex items-center ig-text-light text-sm">
+                        <i class="far fa-calendar mr-2" aria-hidden="true"></i>
+                        <span class="current-date">15 Mars 2024</span>
+                    </div>
+                </article>
+                
+                <article class="ig-card ig-fade-in" style="animation-delay: 0.2s;">
+                    <div class="h-48 rounded-lg mb-6" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                    <div class="mb-2">
+                        <span class="ig-form-label" style="color: var(--ig-blue);">RÉGLEMENTATION</span>
+                    </div>
+                    <h3 class="ig-subtitle text-xl mb-3">Permis de construire à Conakry</h3>
+                    <p class="ig-text mb-4">
+                        Toutes les démarches administratives expliquées étape par étape...
+                    </p>
+                    <div class="flex items-center ig-text-light text-sm">
+                        <i class="far fa-calendar mr-2" aria-hidden="true"></i>
+                        <span class="current-date">10 Mars 2024</span>
+                    </div>
+                </article>
+                
+                <article class="ig-card ig-fade-in" style="animation-delay: 0.4s;">
+                    <div class="h-48 rounded-lg mb-6" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);"></div>
+                    <div class="mb-2">
+                        <span class="ig-form-label" style="color: var(--ig-blue);">TENDANCES</span>
+                    </div>
+                    <h3 class="ig-subtitle text-xl mb-3">Architecture moderne en Afrique</h3>
+                    <p class="ig-text mb-4">
+                        Les nouvelles tendances architecturales qui s'adaptent au contexte africain...
+                    </p>
+                    <div class="flex items-center ig-text-light text-sm">
+                        <i class="far fa-calendar mr-2" aria-hidden="true"></i>
+                        <span class="current-date">5 Mars 2024</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="ig-section" style="background-color: var(--ig-light);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 ig-slide-up">
+                <h2 class="ig-subtitle text-4xl md:text-5xl mb-4">Contactez-nous</h2>
+                <p class="ig-text-light text-xl max-w-2xl mx-auto">
+                    Prêt à démarrer votre projet ? Contactez-nous pour un devis gratuit
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="ig-fade-in">
+                    <form id="contact-form" class="ig-card">
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div class="ig-form-group">
+                                <label for="contact-name" class="ig-form-label">Nom complet</label>
+                                <input id="contact-name" type="text" name="name" required maxlength="50" autocomplete="name" class="ig-form-input">
+                            </div>
+                            <div class="ig-form-group">
+                                <label for="contact-phone" class="ig-form-label">Téléphone</label>
+                                <input id="contact-phone" type="tel" name="phone" required maxlength="20" autocomplete="tel" class="ig-form-input">
+                            </div>
+                        </div>
+                        
+                        <div class="ig-form-group">
+                            <label for="contact-email" class="ig-form-label">Email</label>
+                            <input id="contact-email" type="email" name="email" required maxlength="100" autocomplete="email" class="ig-form-input">
+                        </div>
+                        
+                        <div class="ig-form-group">
+                            <label for="contact-project-type" class="ig-form-label">Type de projet</label>
+                            <select id="contact-project-type" name="project_type" required class="ig-form-input" title="Sélectionnez le type de projet">
+                                <option value="">Sélectionnez un type</option>
+                                <option value="construction">Construction neuve</option>
+                                <option value="renovation">Rénovation</option>
+                                <option value="plans">Plans seulement</option>
+                                <option value="extension">Extension</option>
+                            </select>
+                        </div>
+                        
+                        <div class="ig-form-group">
+                            <label for="contact-message" class="ig-form-label">Message</label>
+                            <textarea id="contact-message" name="message" rows="4" required maxlength="1000" class="ig-form-input" placeholder="Décrivez votre projet..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="ig-btn-gradient w-full">
+                            Envoyer le message
+                        </button>
+                        
+                        <p class="ig-text-light text-sm mt-4 text-center">
+                            <i class="fas fa-info-circle mr-1" aria-hidden="true"></i>
+                            Formulaire de démonstration - Les messages ne sont pas envoyés
+                        </p>
+                    </form>
+                </div>
+                
+                <div class="space-y-8 ig-slide-up">
+                    <div class="ig-card">
+                        <h4 class="ig-subtitle text-xl mb-6">Nos Coordonnées</h4>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background: var(--ig-gradient);">
+                                    <i class="fas fa-map-marker-alt text-white" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h5 class="ig-subtitle">Adresse</h5>
+                                    <p class="ig-text-light">Sous-préfecture Hafia, Labé, Guinée</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background: var(--ig-gradient);">
+                                    <i class="fas fa-phone text-white" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h5 class="ig-subtitle">Téléphone</h5>
+                                    <p class="ig-text-light">+224 627 70 65 64</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background: var(--ig-gradient);">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <h5 class="ig-subtitle">Email</h5>
+                                    <a href="mailto:contact@oneveccreator.com" class="ig-text-light hover:text-blue-500 transition-colors">contact@oneveccreator.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ig-card">
+                        <h4 class="ig-subtitle text-xl mb-6">Horaires d'ouverture</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="ig-text">Lundi - Vendredi</span>
+                                <span class="ig-subtitle">8h00 - 18h00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="ig-text">Samedi</span>
+                                <span class="ig-subtitle">8h00 - 14h00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="ig-text">Dimanche</span>
+                                <span style="color: #ed4956; font-weight: 600;">Fermé</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ig-card" style="background: var(--ig-gradient); color: white;">
+                        <h4 class="text-xl font-bold mb-6">Suivez-nous</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition-colors" aria-label="Suivez-nous sur Facebook">
+                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition-colors" aria-label="Suivez-nous sur Instagram">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition-colors" aria-label="Suivez-nous sur LinkedIn">
+                                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition-colors" aria-label="Contactez-nous sur WhatsApp">
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-16" style="background-color: var(--ig-secondary); color: white;">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <a href="#accueil" class="ig-logo text-white cursor-pointer block mb-4">🏗️ Onevec Creator</a>
+                    <p class="ig-text-light mb-6">
+                        Votre partenaire de confiance pour tous vos projets de construction en Guinée.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors" aria-label="Suivez-nous sur Facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors" aria-label="Suivez-nous sur Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors" aria-label="Suivez-nous sur LinkedIn">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6 text-white">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="ig-text-light hover:text-white transition-colors">Plans 2D/3D</a></li>
+                        <li><a href="#services" class="ig-text-light hover:text-white transition-colors">Construction</a></li>
+                        <li><a href="#services" class="ig-text-light hover:text-white transition-colors">Rénovation</a></li>
+                        <li><a href="#services" class="ig-text-light hover:text-white transition-colors">Conseil</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6 text-white">Liens utiles</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#apropos" class="ig-text-light hover:text-white transition-colors">À propos</a></li>
+                        <li><a href="#portfolio" class="ig-text-light hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="#blog" class="ig-text-light hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#contact" class="ig-text-light hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6 text-white">Contact</h4>
+                    <ul class="space-y-3 ig-text-light">
+                        <li>Sous-préfecture Hafia, Labé</li>
+                        <li>+224 627 70 65 64</li>
+                        <li>contact@oneveccreator.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center ig-text-light">
+                <p>&copy; <span id="current-year">2024</span> Onevec Creator. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA Button -->
+    <button id="open-quote-modal-floating" class="ig-floating-cta">
+        <i class="fas fa-calculator mr-2" aria-hidden="true"></i>
+        Devis Gratuit
+    </button>
+
+    <!-- Quote Modal -->
+    <div id="quote-modal" class="fixed inset-0 ig-modal z-50 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="quote-modal-title">
+        <div class="ig-modal-content p-8">
+            <div class="flex justify-between items-center mb-8">
+                <h3 id="quote-modal-title" class="ig-subtitle text-2xl">Devis Rapide</h3>
+                <button id="close-quote-modal-btn" class="ig-text-light hover:text-gray-900 transition-colors" aria-label="Fermer la modale">
+                    <i class="fas fa-times text-xl" aria-hidden="true"></i>
+                </button>
+            </div>
+            
+            <form id="quote-form">
+                <div class="space-y-6">
+                    <div class="ig-form-group">
+                        <label for="quote-name" class="ig-form-label">Nom complet</label>
+                        <input id="quote-name" type="text" name="name" required maxlength="50" autocomplete="name" class="ig-form-input">
+                    </div>
+                    
+                    <div class="ig-form-group">
+                        <label for="quote-phone" class="ig-form-label">Téléphone</label>
+                        <input id="quote-phone" type="tel" name="phone" required maxlength="20" autocomplete="tel" class="ig-form-input">
+                    </div>
+                    
+                    <div class="ig-form-group">
+                        <label for="quote-project-type" class="ig-form-label">Type de projet</label>
+                        <select id="quote-project-type" name="project_type" required class="ig-form-input" title="Sélectionnez le type de projet">
+                            <option value="">Sélectionnez...</option>
+                            <option value="construction">Construction neuve</option>
+                            <option value="renovation">Rénovation</option>
+                            <option value="plans">Plans seulement</option>
+                            <option value="extension">Extension</option>
+                        </select>
+                    </div>
+                    
+                    <div class="ig-form-group">
+                        <label for="quote-budget" class="ig-form-label">Budget approximatif</label>
+                        <select id="quote-budget" name="budget" class="ig-form-input" title="Sélectionnez votre budget approximatif">
+                            <option value="">Sélectionnez votre budget</option>
+                            <option value="low">Moins de 500M GNF</option>
+                            <option value="medium">500M - 1 Milliard GNF</option>
+                            <option value="high">1 - 2 Milliards GNF</option>
+                            <option value="premium">Plus de 2 Milliards GNF</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="ig-btn-gradient w-full mt-8">
+                    Demander un devis
+                </button>
+                
+                <p class="ig-text-light text-sm mt-4 text-center">
+                    <i class="fas fa-info-circle mr-1" aria-hidden="true"></i>
+                    Formulaire de démonstration
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script src='script.js'></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96f56af3a647a0d7',t:'MTc1NTIyNjU3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
