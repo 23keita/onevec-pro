@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plans de Maison – Présentation 360°</title>
+  <style>
+    :root{
+      --primary:#0ea5e9; /* bleu Instagram-like */
+      --primary-dark:#0284c7;
+      --bg:#f9fafb;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --ring:rgba(14,165,233,.25);
+      --shadow:0 10px 30px rgba(2,8,23,.06);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;background:var(--bg);color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    .wrap{max-width:1100px;margin:24px auto;padding:0 16px}
+    .header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:16px
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#e0f2fe,#fff);box-shadow:var(--shadow);}
+    .title{font-weight:800;letter-spacing:.2px}
+    .badge{font-size:12px;color:var(--muted)}
+
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    @media (max-width:980px){.grid{grid-template-columns:1fr;}}
+
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .pad{padding:16px}
+
+    /* Viewer */
+    .viewer{
+      position:relative;background:linear-gradient(145deg,#eef7ff,#ffffff);
+      aspect-ratio: 16/10; /* responsive */
+      border-radius:var(--radius);
+      overflow:hidden;
+      -webkit-user-select:none;
+      user-select:none;
+      touch-action: none;
+    }
+    .viewer canvas{position:absolute;inset:0;width:100%;height:100%}
+
+    .toolbar{
+      position:absolute;inset:auto 12px 12px auto;display:flex;gap:8px;z-index:40
+    }
+    .toolbtn{
+      border:none;background:var(--card);padding:10px 12px;border-radius:16px;cursor:pointer;box-shadow:var(--shadow);
+    }
+    .toolbtn:active{transform:translateY(1px)}
+
+    .thumbs{display:flex;gap:10px;overflow:auto;padding:12px}
+    .thumbs img{height:70px;border-radius:14px;border:2px solid transparent;cursor:pointer;box-shadow:var(--shadow)}
+    .thumbs img.active{border-color:var(--primary)}
+
+    /* Hotspots */
+    .hotspot{position:absolute;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 8px var(--ring);cursor:pointer}
+    .tooltip{position:absolute;transform:translate(-50%, -100%);background:#0b1220;color:#fff;padding:10px 12px;border-radius:12px;box-shadow:var(--shadow);font-size:13px;white-space:nowrap}
+
+    /* Side panel */
+    .side{display:flex;flex-direction:column;gap:14px}
+    .price{font-size:30px;font-weight:800;color:var(--primary)}
+    .desc{color:var(--muted);line-height:1.6}
+    .specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .spec{background:var(--card);border-radius:16px;padding:12px;box-shadow:var(--shadow)}
+    .cta{display:flex;gap:10px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      border:none;border-radius:999px;padding:14px 18px;font-weight:700;cursor:pointer
+    }
+    .btn-primary{background:var(--primary);color:#fff;box-shadow:var(--shadow)}
+    .btn-primary:hover{background:var(--primary-dark)}
+    .btn-ghost{background:#eef2f7;color:#0b1220}
+
+    .note{font-size:12px;color:var(--muted)}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,.55);z-index:100}
+    .modal.show{display:flex}
+    .modal .dialog{background:var(--card);border-radius:20px;max-width:720px;width:92%;box-shadow:var(--shadow)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div class="brand">
+        <div class="logo" aria-hidden></div>
+        <div>
+          <div class="title">Plans de Maison – Collection Pro</div>
+          <div class="badge">Style Instagram • Sans personnages</div>
+        </div>
+      </div>
+      <button class="btn btn-ghost" id="btnShare">Partager</button>
+    </header>
+
+    <section class="grid">
+      <!-- LEFT: Viewer card -->
+      <div class="card">
+        <div class="pad">
+          <div class="viewer" id="viewer" aria-label="Visionneuse 360° du plan">
+            <canvas id="cv"></canvas>
+            <div class="toolbar">
+              <button class="toolbtn" id="btnPlay" title="Lecture/Arrêt 360°">▶︎</button>
+              <button class="toolbtn" id="btnReset" title="Réinitialiser">⟲</button>
+              <button class="toolbtn" id="btnZoomIn" title="Zoom +">＋</button>
+              <button class="toolbtn" id="btnZoomOut" title="Zoom −">－</button>
+              <button class="toolbtn" id="btnFull" title="Plein écran">⛶</button>
+            </div>
+            <!-- Hotspots generated dynamically -->
+          </div>
+        </div>
+        <div class="thumbs" id="thumbs" aria-label="Vignettes de vues clés"></div>
+      </div>
+
+      <!-- RIGHT: Details -->
+      <aside class="side">
+        <div class="card pad">
+          <div class="price">À partir de 500 000 GNF</div>
+          <p class="desc">Plans sur mesure optimisés pour votre terrain, votre budget et votre style (moderne, traditionnel, duplex). Présentation 360°, annotations techniques et export PDF.</p>
+          <div class="specs" id="specs"></div>
+          <div class="cta">
+            <button class="btn btn-primary" id="btnOrder">📥 Commander mon plan</button>
+            <button class="btn btn-ghost" id="btnDownload">⤓ Export PDF</button>
+          </div>
+          <p class="note">Remplacez les images par vos rendus. Ajoutez vos surfaces, matériaux et options dans la configuration ci‑dessous.</p>
+        </div>
+        <div class="card pad">
+          <h3 style="margin:0 0 8px 0">Ce qui est inclus</h3>
+          <ul style="margin:0 0 0 18px; line-height:1.7; color:var(--muted)">
+            <li>Fichiers PDF + images HD</li>
+            <li>Vues 360° (façades, dessus, perspectives)</li>
+            <li>Plan niveau par niveau avec cotes</li>
+            <li>Révisions mineures incluses</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <!-- Modal Details -->
+  <div class="modal" id="modal">
+    <div class="dialog pad">
+      <h3 id="mTitle" style="margin-top:6px"></h3>
+      <p id="mBody" style="color:var(--muted);"></p>
+      <div style="display:flex;justify-content:flex-end;margin-top:10px">
+        <button class="btn btn-primary" id="mClose">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ==========================
+       CONFIGURATION À PERSONNALISER
+       ========================== */
+
+    // 1) Liste d'images pour la rotation 360° (placer vos fichiers dans /images/360/)
+    // Nommez vos frames de 01 à 36 (ou autre) : frame_01.jpg, frame_02.jpg, etc.
+    const FRAMES = Array.from({length: 36}, (_,i)=>`images/360/frame_${String(i+1).padStart(2,'0')}.jpg`);
+
+    // 2) Vues clés (miniatures) pour accéder rapidement aux faces : façade, arrière, gauche, droite, dessus
+    const KEY_VIEWS = [
+      { label: 'Façade',   frame: 1 },
+      { label: 'Droite',   frame: 10 },
+      { label: 'Arrière',  frame: 19 },
+      { label: 'Gauche',   frame: 28 },
+      { label: 'Dessus',   frame: 34 }
+    ];
+
+    // 3) Spécifications (affichées dans la colonne droite)
+    const SPECS = [
+      { k: 'Surface habitable', v: '120 m²' },
+      { k: 'Niveaux', v: 'R+1' },
+      { k: 'Chambres', v: '3' },
+      { k: 'Salles d’eau', v: '2' },
+      { k: 'Séjour', v: '35 m²' },
+      { k: 'Terrasse', v: 'Oui' },
+    ];
+
+    // 4) Hotspots annotés (par frame). Les coordonnées sont en pourcentage de la zone visible.
+    // Exemple : un point sur la porte à la frame 1.
+    const HOTSPOTS = [
+      { frame: 1,  x: 52, y: 68, title: 'Entrée principale', body: 'Porte pleine avec imposte vitrée, largeur 1,00 m.' },
+      { frame: 10, x: 22, y: 54, title: 'Garage', body: 'Largeur 3,00 m, porte sectionnelle.' },
+      { frame: 19, x: 66, y: 42, title: 'Baie vitrée', body: 'Coulissant 3 vantaux, vitrage performant.' },
+      { frame: 28, x: 40, y: 30, title: 'Escalier', body: 'Structure bois/acier, marche 28 cm, giron 25 cm.' },
+      { frame: 34, x: 58, y: 55, title: 'Toiture', body: 'Toit terrasse avec étanchéité multicouche.' },
+    ];
+
+    // 5) Lien de commande (remplacer par votre URL ou action)
+    const ORDER_URL = '#commande';
+
+    // 6) Export PDF (démo simple image->PDF via canvas; pour un export avancé, intégrer une lib côté serveur)
+
+    /* ==========================
+       CODE DU VIEWER 360°
+       ========================== */
+    const viewer = document.getElementById('viewer');
+    const canvas = document.getElementById('cv');
+    const ctx = canvas.getContext('2d');
+
+    let W=0,H=0, DPR = window.devicePixelRatio || 1;
+    function resize(){
+      const rect = viewer.getBoundingClientRect();
+      W = Math.floor(rect.width);
+      H = Math.floor(rect.height);
+      canvas.width = Math.floor(W*DPR);
+      canvas.height = Math.floor(H*DPR);
+      canvas.style.width = W+'px';
+      canvas.style.height = H+'px';
+      draw();
+      renderHotspots();
+    }
+    window.addEventListener('resize', resize);
+
+    // Preload frames
+    const images = FRAMES.map(src=>{ const img=new Image(); img.src=src; return img; });
+
+    let frameIndex = 0; // 0..FRAMES.length-1
+    let zoom = 1;       // scale factor
+    let offsetX = 0, offsetY = 0; // panning offset
+
+    let dragging=false; let lastX=0; let lastY=0; let panning=false;
+
+    function clamp(v,min,max){return Math.max(min,Math.min(max,v));}
+
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      const img = images[frameIndex];
+      if(!img.complete){ requestAnimationFrame(draw); return; }
+      const iw = img.width, ih = img.height;
+      const cw = canvas.width, ch = canvas.height;
+      // scale to fit, then apply zoom and pan
+      const scale = Math.min(cw/iw, ch/ih) * zoom;
+      const dw = iw*scale, dh = ih*scale;
+      const dx = (cw - dw)/2 + offsetX*DPR;
+      const dy = (ch - dh)/2 + offsetY*DPR;
+      ctx.imageSmoothingQuality='high';
+      ctx.drawImage(img, dx, dy, dw, dh);
+    }
+
+    function nextFrame(step=1){
+      frameIndex = (frameIndex + step + images.length) % images.length;
+      draw();
+      renderHotspots();
+      highlightActiveThumb();
+    }
+
+    // Interaction: drag to rotate, right-drag to pan (or hold Shift), wheel to zoom
+    function onPointerDown(e){
+      viewer.setPointerCapture(e.pointerId);
+      dragging=true; lastX=e.clientX; lastY=e.clientY; panning = e.buttons===2 || e.shiftKey;
+    }
+    function onPointerMove(e){
+      if(!dragging) return;
+      const dx = e.clientX - lastX; const dy = e.clientY - lastY;
+      lastX = e.clientX; lastY = e.clientY;
+      if(panning){
+        offsetX += dx; offsetY += dy; draw(); renderHotspots();
+      } else {
+        const step = Math.sign(-dx) * Math.max(1, Math.floor(Math.abs(dx)/2));
+        if(step!==0) nextFrame(step);
+      }
+    }
+    function onPointerUp(e){ dragging=false; panning=false; viewer.releasePointerCapture(e.pointerId); }
+
+    function onWheel(e){
+      e.preventDefault();
+      const delta = -Math.sign(e.deltaY)*0.1;
+      zoom = clamp(zoom + delta, 0.5, 4);
+      draw(); renderHotspots();
+    }
+
+    viewer.addEventListener('pointerdown', onPointerDown);
+    viewer.addEventListener('pointermove', onPointerMove);
+    viewer.addEventListener('pointerup', onPointerUp);
+    viewer.addEventListener('wheel', onWheel, {passive:false});
+    viewer.addEventListener('contextmenu', e=>e.preventDefault());
+
+    // Controls
+    const btnPlay = document.getElementById('btnPlay');
+    const btnReset = document.getElementById('btnReset');
+    const btnFull  = document.getElementById('btnFull');
+    const btnZoomIn= document.getElementById('btnZoomIn');
+    const btnZoomOut=document.getElementById('btnZoomOut');
+
+    let playing=false; let rafId=null;
+    function tick(){
+      if(!playing) return; nextFrame(1); rafId = requestAnimationFrame(tick);
+    }
+    btnPlay.addEventListener('click',()=>{
+      playing=!playing; btnPlay.textContent = playing ? '⏸' : '▶︎';
+      if(playing){ rafId=requestAnimationFrame(tick);} else { cancelAnimationFrame(rafId); }
+    });
+    btnReset.addEventListener('click',()=>{ zoom=1; offsetX=0; offsetY=0; draw(); renderHotspots(); })
+    btnFull.addEventListener('click',()=>{ if(!document.fullscreenElement){ viewer.requestFullscreen(); } else { document.exitFullscreen(); } })
+    btnZoomIn.addEventListener('click',()=>{ zoom=clamp(zoom+0.2,0.5,4); draw(); renderHotspots(); })
+    btnZoomOut.addEventListener('click',()=>{ zoom=clamp(zoom-0.2,0.5,4); draw(); renderHotspots(); })
+
+    // Thumbnails for key views
+    const thumbs = document.getElementById('thumbs');
+    function renderThumbs(){
+      thumbs.innerHTML='';
+      KEY_VIEWS.forEach(v=>{
+        const idx = clamp((v.frame-1),0,images.length-1);
+        const img = document.createElement('img');
+        img.alt = v.label;
+        img.src = FRAMES[idx];
+        img.addEventListener('click',()=>{ frameIndex=idx; draw(); renderHotspots(); highlightActiveThumb(); });
+        img.title = v.label;
+        thumbs.appendChild(img);
+      });
+      highlightActiveThumb();
+    }
+    function highlightActiveThumb(){
+      [...thumbs.children].forEach((el,i)=>{
+        const target = clamp((KEY_VIEWS[i].frame-1),0,images.length-1);
+        el.classList.toggle('active', target===frameIndex);
+      });
+    }
+
+    // Hotspots
+    function renderHotspots(){
+      // remove existing
+      [...viewer.querySelectorAll('.hotspot, .tooltip')].forEach(n=>n.remove());
+      const rect = viewer.getBoundingClientRect();
+      const img = images[frameIndex];
+      if(!img.complete) return;
+
+      // compute current image draw rect
+      const iw = img.width, ih = img.height;
+      const cw = canvas.width, ch = canvas.height;
+      const scale = Math.min(cw/iw, ch/ih) * zoom;
+      const dw = iw*scale, dh = ih*scale;
+      const dx = (cw - dw)/2 + offsetX*DPR;
+      const dy = (ch - dh)/2 + offsetY*DPR;
+
+      HOTSPOTS.filter(h=>h.frame-1===frameIndex).forEach(h=>{
+        const px = dx + (h.x/100)*dw;
+        const py = dy + (h.y/100)*dh;
+        const dot = document.createElement('div');
+        dot.className='hotspot';
+        dot.style.left = (px/DPR)+'px';
+        dot.style.top  = (py/DPR)+'px';
+        dot.setAttribute('aria-label', h.title);
+        dot.addEventListener('click',()=>showTip(h, dot));
+        viewer.appendChild(dot);
+      });
+    }
+
+    function showTip(h, anchor){
+      const tip = document.createElement('div');
+      tip.className='tooltip';
+      tip.textContent = h.title + ' — ' + h.body;
+      viewer.appendChild(tip);
+      const r = anchor.getBoundingClientRect();
+      const v = viewer.getBoundingClientRect();
+      tip.style.left = (r.left - v.left)+'px';
+      tip.style.top  = (r.top - v.top - 12)+'px';
+      setTimeout(()=>tip.remove(), 3000);
+    }
+
+    // Specs render
+    const specsEl = document.getElementById('specs');
+    function renderSpecs(){
+      specsEl.innerHTML='';
+      SPECS.forEach(s=>{
+        const d=document.createElement('div'); d.className='spec'; d.innerHTML = `<strong>${s.k}</strong><br><span style="color:var(--muted)">${s.v}</span>`; specsEl.appendChild(d);
+      })
+    }
+
+    // Export PDF (simple): capture le canvas courant et l’insère dans un PDF A4 portrait
+    // NOTE: Sans librairie externe, on exporte une image PNG; pour un vrai PDF multi-pages, utiliser un service backend.
+    function dataURLToBlob(dataURL){
+      const bin = atob(dataURL.split(',')[1]); const arr = new Uint8Array(bin.length);
+      for(let i=0;i<bin.length;i++){arr[i]=bin.charCodeAt(i);} return new Blob([arr],{type:'image/png'});
+    }
+    function exportPNG(){
+      const url = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href=url; a.download='plan-360.png'; a.click();
+    }
+
+    document.getElementById('btnDownload').addEventListener('click', exportPNG);
+    document.getElementById('btnOrder').addEventListener('click', ()=>{ window.location.href = ORDER_URL; });
+
+    // Modal wiring (for future extended details)
+    const modal = document.getElementById('modal');
+    const mClose = document.getElementById('mClose');
+    mClose.addEventListener('click', ()=> modal.classList.remove('show'));
+
+    // Share API (si supportée)
+    document.getElementById('btnShare').addEventListener('click', async ()=>{
+      const data = { title:'Plans de Maison – 360°', text:'Découvrez nos plans de maison en 360°', url: location.href };
+      if(navigator.share){ try{ await navigator.share(data);}catch(e){} } else {
+        navigator.clipboard?.writeText(location.href);
+        alert('Lien copié !');
+      }
+    });
+
+    // Init
+    window.addEventListener('load', ()=>{
+      resize();
+      renderThumbs();
+      renderSpecs();
+      // Start on first fully loaded image
+      const check = setInterval(()=>{ if(images[0].complete){ draw(); renderHotspots(); clearInterval(check); } }, 60);
+    });
+  </script>
+</body>
+</html>
