@@ -34,7 +34,7 @@
         
         /* Typography Instagram Style */
         .ig-title {
-            font-weight: 800;
+            font-weight: 400;
             letter-spacing: -0.02em;
             background: var(--ig-gradient);
             -webkit-background-clip: text;
@@ -136,8 +136,8 @@
         .ig-nav {
             background: var(--ig-white);
             border-bottom: 1px solid var(--ig-border);
-            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
         }
         
         .ig-nav-link {
@@ -293,8 +293,8 @@
         /* Modal Instagram Style */
         .ig-modal {
             background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
         }
         
         .ig-modal-content {
@@ -309,7 +309,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .ig-title {
-                font-size: 2.5rem;
+                font-size: 1.5rem;
             }
             
             .ig-card {
@@ -346,11 +346,11 @@
             }
             
             .ig-title {
-                font-size: 6rem;
+                font-size: 2rem;
             }
             
             .ig-subtitle {
-                font-size: 3.5rem;
+                font-size: 1.5rem;
             }
             
             .ig-card {
